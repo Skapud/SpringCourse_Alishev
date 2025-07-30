@@ -1,43 +1,32 @@
 package ru.podolian.springcourse.models;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 public class Person {
-    private int id;
+    private int personId;
 
     @NotEmpty(message = "Name should not be empty")
-    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
+    @Size(min = 5, max = 100, message = "Name should be between 5 and 100 characters")
     private String name;
 
-    @Min(value = 0, message = "Age should be greater than 0")
-    private int age;
-
-    @NotEmpty(message = "Email should not be empty")
-    @Email(message = "Email should be valid")
-    private String email;
-
-    // Страна, Город, Индекс (6 цифр)
-    // Russia, Moscow, 123456
-    @Pattern(regexp =  "[A-Z]\\w+, [A-Z]\\w+, \\d{6}", message = "Your address should be in this format: Country, Town, Postal Code (6 digits)")
-    private String address;
+    @Min(value = 1901, message = "Year of birth should be greater than 1900")
+    @Max(value = 2019, message = "Year of birth should be lower than 2020")
+    private int year;
 
     public Person(){}
 
-    public Person(int id, String name, int age, String email, String address) {
-        this.id = id;
+    public Person(int id, String name, int year) {
+        this.personId = id;
         this.name = name;
-        this.age = age;
-        this.email = email;
-        this.address = address;
+        this.year = year;
     }
 
-    public int getId() {
-        return id;
+    public int getPersonId() {
+        return personId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public String getName() {
@@ -48,27 +37,11 @@ public class Person {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public int getYear() {
+        return year;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setYear(int year) {
+        this.year = year;
     }
 }
