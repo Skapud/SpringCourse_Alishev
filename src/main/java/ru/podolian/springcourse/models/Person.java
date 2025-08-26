@@ -3,6 +3,11 @@ package ru.podolian.springcourse.models;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
+import org.springframework.data.jpa.repository.Temporal;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Person")
@@ -27,13 +32,24 @@ public class Person {
     @Email
     private String email;
 
+    @Enumerated(EnumType.ORDINAL)
+    private Mood mood;
+
+    @OneToMany(mappedBy = "owner")
+    public List<Item> items;
+
+    @Column(name = "date_of_birth")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date dateOfBirth;
+
+    @Column(name = "created_at")
+    private Date createdAt;
+
     public Person(){}
 
-    public Person(int id, String name, int age, String email) {
-        this.id = id;
+    public Person(String name, int age) {
         this.name = name;
         this.age = age;
-        this.email = email;
     }
 
     public int getId() {
@@ -66,6 +82,30 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Mood getMood() {
+        return mood;
+    }
+
+    public void setMood(Mood mood) {
+        this.mood = mood;
     }
 
     @Override

@@ -13,3 +13,9 @@ CREATE TABLE PERSON
 --                       author varchar(75) NOT NULL,
 --                       year int CHECK (year > 1700)
 --     );
+
+-- Просто дата без точного времени
+ALTER TABLE PERSON ADD COLUMN date_of_birth DATE;
+-- Точное время
+-- Значение timestamp сохраняется в секундах до или после полуночи
+ALTER TABLE PERSON ADD COLUMN created_at timestamp;
