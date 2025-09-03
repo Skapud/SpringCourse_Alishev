@@ -1,55 +1,66 @@
 package ru.podolian.springcourse.models;
 
-import jakarta.validation.constraints.Max;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Optional;
+
+@Entity
+@Table(name = "Book")
 public class Book {
-    private int bookId;
 
-    private Integer personId;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    @NotEmpty(message = "Name should not be empty")
-    private String name;
+    @NotEmpty(message = "Название книги не должно быть пустым")
+    @Size(min = 2, max = 100, message = "Название книги должно быть от 2 до 100 символов длиной")
+    private String title;
 
-    @NotEmpty(message = "Author should not be empty")
+    @NotEmpty(message = "Автор не должен быть пустым")
+    @Size(min = 2, max = 100, message = "Имя автора должно быть от 2 до 100 символов длиной")
     private String author;
 
-    @Min(value = 1700, message = "Year should be greater than 1700")
-    @Max(value = 2025, message =  "Year should not be greater than 2025")
+    @Min(value = 1500, message = "Год должен быть больше, чем 1500")
     private int year;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person owner;
+
+    @Column(name = "picked_at")
+    private LocalDateTime picked;
+
+    @Transient
+    private boolean expired;
 
     public Book(){}
 
-    public Book(int id, String name, String author, int year) {
-        this.name = name;
+    public Book(String title, String author, int year) {
+        this.title = title;
         this.author = author;
         this.year = year;
     }
 
-    public int getBookId() {
-        return bookId;
+    public int getId() {
+        return id;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Integer getPersonId() {
-        return personId;
+    public String getTitle() {
+        return title;
     }
 
-    public void setPersonId(Integer personId) {
-        this.personId = personId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getAuthor() {
@@ -66,5 +77,29 @@ public class Book {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
+    }
+
+    public LocalDateTime getPicked() {
+        return picked;
+    }
+
+    public void setPicked(LocalDateTime picked) {
+        this.picked = picked;
+    }
+
+    public boolean isExpired() {
+        return expired;
+    }
+
+    public void setExpired(boolean expired) {
+        this.expired = expired;
     }
 }
