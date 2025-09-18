@@ -21,9 +21,3 @@ VALUES ('Ледокол', 'Виктор Суворов', 1989),
        ('Gender Queer: A Memoir', 'Maia Kobabe', 2019),
        ('Irreversible Damage: The Transgender Craze Seducing Our Daughters', 'Abigail Shrier', 2020),
        ('The Trouble with Normal: Sex, Politics, and the Ethics of Queer Life', 'Michael Warner', 1999);
-
-INSERT INTO BOOK (title, author, year)
-VALUES ('Светочи тьмы. Физиология либерального клана: от Гайдара и Березовского до Собчак и Навального','Михаил Делягин', 2016),
-       ('Gender Queer: A Memoir', 'Maia Kobabe', 2019),
-       ('Irreversible Damage: The Transgender Craze Seducing Our Daughters', 'Abigail Shrier', 2020),
-       ('The Trouble with Normal: Sex, Politics, and the Ethics of Queer Life', 'Michael Warner', 1999);
