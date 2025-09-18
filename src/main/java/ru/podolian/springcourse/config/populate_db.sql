@@ -5,21 +5,12 @@ VALUES ('Пагасян Игорь Леонидович', 1992, 'test1@bk.ru'),
        ('Михайлов Станислав Дабулачадович', 1988, 'test4@bk.ru'),
        ('Скуфов Айрат Балдович', 1990, 'test5@bk.ru');
 
+INSERT INTO Person (name, age, email) VALUES ('Tom', 25, 'tom@mail.com');
+INSERT INTO Person (name, age, email) VALUES ('Bob', 31, 'bob1@mail.com');
+INSERT INTO Person (name, age, email) VALUES ('Bob2', 53, 'bob2@mail.com');
+INSERT INTO Person (name, age, email) VALUES ('Bob3', 20, 'bob3@mail.com');
+INSERT INTO Person (name, age, email) VALUES ('Katy', 14, 'katy@mail.com');
 
-
-
--- INSERT INTO BOOK (name, author, year)
--- VALUES ('Руслан и Людмила', 'Александр Пушкин', 1820),
---        ('Чёрный человек', 'Сергей Есенин', 2018),
---        ('Айболит', 'Корней Чуковский', 2021),
---        ('Война и мир', 'Лев Толстой', 2023),
---        ('Ревизор', 'Николай Гоголь', 2025),
---        ('Преступление и наказание', 'Федор Достоевский', 2025);
---
--- INSERT INTO BOOK (person_id, name, author, year)
--- VALUES (1, 'Ледокол', 'Виктор Суворов', 1989),
---        (5, 'Неудобные женщины. История феминизма в 11 конфликтах', 'Хелен Льюис', 2025),
---        (5, 'Светочи тьмы. Физиология либерального клана: от Гайдара и Березовского до Собчак и Навального','Михаил Делягин', 2016),
---        (5, 'Gender Queer: A Memoir', 'Maia Kobabe', 2019),
---        (5, 'Irreversible Damage: The Transgender Craze Seducing Our Daughters', 'Abigail Shrier', 2020),
---        (5, 'The Trouble with Normal: Sex, Politics, and the Ethics of Queer Life', 'Michael Warner', 1999);
+INSERT INTO Item (person_id, item_name) VALUES(1, 'Airpods');
+INSERT INTO Item (person_id, item_name) VALUES(1, 'Playstation');
+INSERT INTO Item (person_id, item_name) VALUES(1, 'TV');

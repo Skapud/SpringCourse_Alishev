@@ -32,6 +32,7 @@ public class Person {
     @Email
     private String email;
 
+    // если enum type string то в БД mood VARCHAR
     @Enumerated(EnumType.ORDINAL)
     private Mood mood;
 
